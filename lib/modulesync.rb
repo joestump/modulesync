@@ -99,7 +99,7 @@ module ModuleSync # rubocop:disable Metrics/ModuleLength
         Renderer.sync(template, module_file(options[:project_root], namespace, module_name, filename))
       rescue # rubocop:disable Lint/RescueWithoutErrorClass
         $stderr.puts "Error while rendering #{filename}"
-        raise
+        raise unless options[:skip_broken]
       end
     end
   end
